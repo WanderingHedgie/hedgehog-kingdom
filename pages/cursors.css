@@ -1,0 +1,182 @@
+/* ==========================================
+   CURSEURS HÉRISSONS
+   ========================================== */
+
+/* Curseur par défaut */
+* {
+    cursor: url("../assets/cursors/normal.png"), default;
+}
+
+
+
+/* Liens et boutons */
+a, button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"],
+label,
+select {
+    cursor: url("../assets/cursors/lien.png"), pointer;
+}
+
+/* Sélection de texte */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="url"],
+input[type="tel"],
+textarea,
+[contenteditable="true"] {
+    cursor: url("../assets/cursors/texte.png"), text;
+}
+
+/* Aide */
+[title].help {
+    cursor: url("../assets/cursors/aide.png"), help;
+}
+
+/* Chargement */
+.loading {
+    cursor: url("../assets/cursors/chargement.png"), progress;
+}
+
+/* Attente */
+.waiting {
+    cursor: url("../assets/cursors/occupe.png"), wait;
+}
+
+/* Menu contextuel */
+.context-menu {
+    cursor: url("../assets/cursors/menu_contextuel.png"), context-menu;
+}
+
+/* Déplacement */
+.move {
+    cursor: url("../assets/cursors/deplacement.png"), move;
+}
+
+/* Copie */
+.copy {
+    cursor: url("../assets/cursors/copier.png"), copy;
+}
+
+/* Raccourci / Alias */
+.alias {
+    cursor: url("../assets/cursors/alias.png"), alias;
+}
+
+/* Action interdite */
+.not-allowed {
+    cursor: url("../assets/cursors/non_autorise.png"), not-allowed;
+}
+
+/* Dépôt interdit */
+.no-drop {
+    cursor: url("../assets/cursors/non_deposable.png"), no-drop;
+}
+
+/* Élément déplaçable */
+.grab {
+    cursor: url("../assets/cursors/grab.png"), grab;
+}
+
+/* Élément en cours de déplacement */
+.grabbing {
+    cursor: url("../assets/cursors/grabbing.png"), grabbing;
+}
+
+/* Zoom */
+.zoom-in {
+    cursor: url("../assets/cursors/zoom_avant.png"), zoom-in;
+}
+
+.zoom-out {
+    cursor: url("../assets/cursors/zoom_arriere.png"), zoom-out;
+}
+
+/* Défilement multidirectionnel */
+.all-scroll {
+    cursor: url("../assets/cursors/defilement.png"), all-scroll;
+}
+
+/* ==========================================
+   REDIMENSIONNEMENT
+   ========================================== */
+
+/* Horizontal */
+.ew-resize {
+    cursor: url("../assets/cursors/redimensionnement_horizontal.png"), ew-resize;
+}
+
+/* Vertical */
+.ns-resize {
+    cursor: url("../assets/cursors/redimensionnement_vertical.png"), ns-resize;
+}
+
+/* Nord */
+.n-resize {
+    cursor: url("../assets/cursors/redimensionnement_nord.png"), n-resize;
+}
+
+/* Sud */
+.s-resize {
+    cursor: url("../assets/cursors/redimensionnement_sud.png"), s-resize;
+}
+
+/* Est */
+.e-resize {
+    cursor: url("../assets/cursors/redimensionnement_est.png"), e-resize;
+}
+
+/* Ouest */
+.w-resize {
+    cursor: url("../assets/cursors/redimensionnement_ouest.png"), w-resize;
+}
+
+/* Nord-est */
+.ne-resize {
+    cursor: url("../assets/cursors/redimensionnement_nord_est.png"), ne-resize;
+}
+
+/* Nord-ouest */
+.nw-resize {
+    cursor: url("../assets/cursors/redimensionnement_nord_ouest.png"), nw-resize;
+}
+
+/* Sud-est */
+.se-resize {
+    cursor: url("../assets/cursors/redimensionnement_sud_est.png"), se-resize;
+}
+
+/* Sud-ouest */
+.sw-resize {
+    cursor: url("../assets/cursors/redimensionnement_sud_ouest.png"), sw-resize;
+}
+
+/* Redimensionnement des colonnes */
+.col-resize {
+    cursor: url("../assets/cursors/redimensionnement_colonne.png"), col-resize;
+}
+
+/* Redimensionnement des lignes */
+.row-resize {
+    cursor: url("../assets/cursors/redimensionnement_ligne.png"), row-resize;
+}
+
+/* Diagonales */
+.nesw-resize {
+    cursor: url("../assets/cursors/redimensionnement_ne_so.png"), nesw-resize;
+}
+
+.nwse-resize {
+    cursor: url("../assets/cursors/redimensionnement_no_se.png"), nwse-resize;
+}
+
+/* Sélection verticale */
+.vertical-text {
+    cursor: url("../assets/cursors/texte_vertical.png"), vertical-text;
+}
