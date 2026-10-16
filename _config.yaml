@@ -11,8 +11,4 @@ defaults:
   - scope:
       path: "pages/gallery.html"
     values:
-<<<<<<< HEAD
       permalink: /gallery
-=======
-      permalink: /gallery/
->>>>>>> 31ff0b820b13839a5a9adffebd803c21c83ec7eb
