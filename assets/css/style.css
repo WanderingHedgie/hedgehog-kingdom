@@ -373,15 +373,31 @@ footer p {
 #footer-message {
   display: inline-block;
   clip-path: inset(0 0 0 0);
+  white-space: nowrap;
 }
 
 #footer-hedgehog {
-  cursor: url("../images/cursors/lien.png"), pointer;
+  
   display: inline-block;
   position: relative;
   z-index: 2;
+  
+  cursor: url("../images/cursors/lien.png"), pointer;
+  -webkit-user-select: none;
+  user-select: none;
+
   flex-shrink: 0;
-  will-change: transform;
+  transform-origin: center;
+}
+
+#footer-hedgehog.animating {
+  pointer-events: none;
+  cursor: url("../images/cursors/normal.png"), default;
+}
+
+#footer-hedgehog:focus-visible {
+  outline: 2px solid currentColor;
+  border-radius: 5px;
 }
 
 #hedgehog-emoji {
@@ -400,7 +416,7 @@ footer p {
 }
 
 /* ==========================================
-AJOUTS
+ANIMATIONS
 ========================================== */
 
 /* Animations */
@@ -410,8 +426,10 @@ AJOUTS
   to{transform:rotate(360deg);}
 }
 
+/* ==========================================
+LIGHTBOX
+========================================== */
 
-/* Zoom et lightbox */
 .zoomable {
   cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
 }
@@ -456,8 +474,9 @@ AJOUTS
   text-align: center;
 }
 
-/* Surbrillance des lignes et de l'élément pointé */
-
+/* ==========================================
+EFFETS DE SURBRILLANCE TABLEAU
+========================================== */
 tbody tr:hover {
   background-color: #4cb53c96;
   background-clip: border-box;

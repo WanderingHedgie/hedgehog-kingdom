@@ -12,7 +12,7 @@
     
     <!-- Métadonnées générales -->
     <meta name="description" content="Bienvenue dans Hedgehog Kingdom ! Découvrez l'univers fascinant des hérissons, leurs différentes espèces et une galerie de photos pleine de piquant et de douceur.">
-
+    
     <!-- Open Graph : Discord, Facebook, WhatsApp, LinkedIn... -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Hedgehog Kingdom 🦔 | Accueil">
@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://wanderinghedgie.github.io/hedgehog-kingdom">
     <meta property="og:site_name" content="Hedgehog Kingdom">
     <meta property="og:locale" content="fr_FR">
-
+    
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hedgehog Kingdom 🦔 | Accueil">
@@ -236,12 +236,17 @@
     </main>
     <footer>
         <div>
-             <p id="hedge-text">
-               <span id="footer-message">Parce que l'on a tous besoin de piquant et de douceur dans la vie </span> 
+            <p id="hedge-text">
+                <span id="footer-message">Parce que l'on a tous besoin de piquant et de douceur dans la vie </span> 
                 <span id="footer-hedgehog">
-                    <span id="hedgehog-emoji">🦔</span>
+                    <span id="footer-hedgehog"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Animer le hérisson"
+                    aria-disabled="false">🦔</span>
                 </span>
             </p>
+            <audio id="sonic-ring" src="assets/audio/sonic-the-hedgehog-ring-collect-2.mp3" />
         </div>
         <img id="footer-leaf" src="assets/images/icons/leaf.png" alt="Icône de feuille" height="25px"/>
     </footer>
