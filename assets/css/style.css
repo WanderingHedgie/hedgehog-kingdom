@@ -1,9 +1,17 @@
 @import url('cursors.css');
+@font-face {
+  font-family: cehwy;
+  src: url(../fonts/Chewy/Chewy-Regular.ttf);
+}
+@font-face {
+  font-family: nunito;
+  src: url("../fonts/Nunito/Nunito-VariableFont_wght.ttf");
+}
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: nunito, sans-serif;
 }
 
 header, footer {
@@ -39,10 +47,14 @@ nav div:first-child {
 }
 
 nav h1 {
-  font-family: 'Chewy', sans-serif;
+  font-family: chewy, sans-serif;
   font-style: italic;
   font-size: calc(1rem + 1.5vw);
   text-shadow: 1px 1px 3px lightgrey;
+}
+
+#nav-hedgehog:hover, nav h1:hover, #end-title:hover {
+  cursor: url("../images/cursors/lien.png"), pointer;
 }
 
 #end-title {
@@ -74,7 +86,7 @@ nav ul {
 
 
 #icons {
-  cursor: url("../assets/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
   display: none;
 }
 
@@ -296,7 +308,7 @@ aside {
 
 #aside-header h2 {
   margin-top: 0;
-  cursor: url("../assets/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
 }
 
 #qmark {
@@ -364,7 +376,7 @@ footer p {
 }
 
 #footer-hedgehog {
-  cursor: url("../assets/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
   display: inline-block;
   position: relative;
   z-index: 2;
@@ -384,7 +396,7 @@ footer p {
 #footer-leaf {
   height: auto;
   width: calc(00.50em + 0.45vw);
-  cursor: url("../assets/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
 }
 
 /* ==========================================
@@ -401,7 +413,7 @@ AJOUTS
 
 /* Zoom et lightbox */
 .zoomable {
-  cursor: url("../assets/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
 }
 
 #lightbox {
@@ -413,7 +425,7 @@ AJOUTS
   
   justify-content: center;
   align-items: center;
-  cursor: url("../assets/cursors/zoom_arriere.png"), zoom-out;
+  cursor: url("../images/cursors/zoom_arriere.png"), zoom-out;
 }
 
 #lightbox.active {

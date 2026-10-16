@@ -59,3 +59,21 @@ console.log(
     "%c🦔 Bienvenue dans les coulisses du Royaume des Hérissons !",
     "color: #4cb53c; font-size: 18px; font-weight: bold;"
 );
+
+// Lien vers l'accueil
+const headerIconTitle = document.querySelectorAll("#nav-hedgehog, nav h1, #end-title");
+
+const homeURL = window.location.hostname.endsWith(".github.io")
+    ? "/hedgehog-kingdom/"
+    : new URL(
+        window.location.pathname.includes("/pages/")
+            ? "../index.html"
+            : "index.html",
+        window.location.href
+    ).href;
+
+headerIconTitle.forEach(element => {
+    element.addEventListener("click", () => {
+        window.location.assign(homeURL);
+    });
+});
