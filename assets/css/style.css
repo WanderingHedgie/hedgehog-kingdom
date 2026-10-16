@@ -1,11 +1,11 @@
 @import url('cursors.css');
 @font-face {
   font-family: chewy;
-  src: url(../fonts/Chewy/Chewy-Regular.ttf);
+  src: url(/hedgehog-kingdom/assets/fonts/Chewy/Chewy-Regular.ttf);
 }
 @font-face {
   font-family: nunito;
-  src: url("../fonts/Nunito/Nunito-VariableFont_wght.ttf");
+  src: url("/hedgehog-kingdom/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf");
 }
 
 * {
@@ -54,7 +54,7 @@ nav h1 {
 }
 
 #nav-hedgehog:hover, nav h1:hover, #end-title:hover {
-  cursor: url("../images/cursors/lien.png"), pointer;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
 }
 
 #end-title {
@@ -86,7 +86,7 @@ nav ul {
 
 
 #icons {
-  cursor: url("../images/cursors/lien.png"), pointer;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
   display: none;
 }
 
@@ -308,7 +308,7 @@ aside {
 
 #aside-header h2 {
   margin-top: 0;
-  cursor: url("../images/cursors/lien.png"), pointer;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
 }
 
 #qmark {
@@ -382,7 +382,7 @@ footer p {
   position: relative;
   z-index: 2;
   
-  cursor: url("../images/cursors/lien.png"), pointer;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
   -webkit-user-select: none;
   user-select: none;
 
@@ -392,7 +392,7 @@ footer p {
 
 #footer-hedgehog.animating {
   pointer-events: none;
-  cursor: url("../images/cursors/normal.png"), default;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/normal.png"), default;
 }
 
 #footer-hedgehog:focus-visible {
@@ -412,7 +412,7 @@ footer p {
 #footer-leaf {
   height: auto;
   width: calc(00.50em + 0.45vw);
-  cursor: url("../images/cursors/lien.png"), pointer;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
 }
 
 /* ==========================================
@@ -431,7 +431,7 @@ LIGHTBOX
 ========================================== */
 
 .zoomable {
-  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
 }
 
 #lightbox {
@@ -443,7 +443,7 @@ LIGHTBOX
   
   justify-content: center;
   align-items: center;
-  cursor: url("../images/cursors/zoom_arriere.png"), zoom-out;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_arriere.png"), zoom-out;
 }
 
 #lightbox.active {
