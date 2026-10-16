@@ -92,6 +92,7 @@ const hedgehog = document.querySelector("#footer-hedgehog");
 const message = document.querySelector("#footer-message");
 const container = document.querySelector("#hedge-text");
 const sonicSound = document.querySelector("#sonic-ring");
+sonicSound.volume = 0.08;
 
 const messages = [
     "Parce que l'on a tous besoin de piquant et de douceur dans la vie",
@@ -135,7 +136,6 @@ async function animateHedgehog() {
         container.style.width = `${oldWidth + hedgehog.offsetWidth + gap}px`;
 
         // 2. Déplacement vers la gauche + effacement
-        sonicSound.volume0 = 0.08;
         sonicSound.play();
 
         await Promise.all([
@@ -176,7 +176,6 @@ async function animateHedgehog() {
         container.style.width = `${newWidth + hedgehog.offsetWidth + gap}px`;
 
         // 4. Demi-tour
-        sonicSound.volume0 = .08;
         sonicSound.play();
         await hedgehog.animate(
             [
