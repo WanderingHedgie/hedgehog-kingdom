@@ -445,7 +445,7 @@ LIGHTBOX
 }
 
 #lightbox.active, #lightbox.active img:hover, #lightbox.active p:hover {
-  cursor: url("../images/cursors/zoom_arriere.png"), zoom-out;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_arriere.png"), zoom-out;
 }
 
 #lightbox.active {
@@ -512,5 +512,5 @@ GALERIE GIFS
 
 .gallery img:hover {
   transform: scale(1.05);
-  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
 }
