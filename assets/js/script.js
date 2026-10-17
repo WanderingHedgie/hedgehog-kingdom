@@ -22,6 +22,7 @@ document.documentElement.style.setProperty(
     `${headerHeight}px`
 );
 
+
 // ==================================================
 // LIGHTBOX
 // ==================================================
@@ -30,7 +31,10 @@ const lightboxImg = document.getElementById("lightbox-img");
 const lightboxDesc = document.getElementById("lightbox-description");
 
 
-document.querySelectorAll(".zoomable").forEach(img => {
+document.addEventListener("click", event => {
+    const img = event.target.closest("img.zoomable");
+
+    if (!img) return;
     img.addEventListener("click", () => {
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
@@ -63,6 +67,7 @@ console.log(
     "%c🦔 Bienvenue dans les coulisses du Royaume des Hérissons !",
     "color: #4cb53c; font-size: 18px; font-weight: bold;"
 );
+
 
 // ==================================================
 // LIEN VERS L'ACCUEIL
