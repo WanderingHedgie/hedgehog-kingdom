@@ -385,7 +385,7 @@ footer p {
   cursor: url("../images/cursors/lien.png"), pointer;
   -webkit-user-select: none;
   user-select: none;
-
+  
   flex-shrink: 0;
   transform-origin: center;
 }
@@ -412,7 +412,6 @@ footer p {
 #footer-leaf {
   height: auto;
   width: calc(00.50em + 0.45vw);
-  cursor: url("../images/cursors/lien.png"), pointer;
 }
 
 /* ==========================================
@@ -443,6 +442,9 @@ LIGHTBOX
   
   justify-content: center;
   align-items: center;
+}
+
+#lightbox.active, #lightbox.active img:hover, #lightbox.active p:hover {
   cursor: url("../images/cursors/zoom_arriere.png"), zoom-out;
 }
 
@@ -484,4 +486,31 @@ tbody tr:hover {
 
 tbody tr td:hover { 
   background-color: #4cb53c96;
+}
+
+/* ==========================================
+GALERIE GIFS
+========================================== */
+.gallery {
+  display: grid;
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 1em;
+  padding: 1em;
+}
+
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
 }
