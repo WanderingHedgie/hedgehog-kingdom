@@ -238,9 +238,6 @@ async function animateHedgehog() {
         console.error("Erreur durant l'animation du hérisson :", error);
         
     } finally {
-        
-        console.log(hedgehog.getAnimations());
-        
         hedgehog.getAnimations().forEach(animation => animation.cancel());
         
         hedgehog.style.transform = "";
