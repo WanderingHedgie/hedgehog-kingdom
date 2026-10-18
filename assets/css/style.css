@@ -403,10 +403,11 @@ footer {
 }
 
 #footer-message {
-  display: inline-block;
-  clip-path: inset(0 0% 0 0);
-  white-space: nowrap;
-  transition: none;
+    display: inline-block;
+    flex-shrink: 0;
+    white-space: nowrap;
+    clip-path: inset(0 0% 0 0);
+    transition: none;
 }
 
 #footer-hedgehog {

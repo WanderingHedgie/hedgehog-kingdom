@@ -133,7 +133,7 @@ async function animateHedgehog() {
         
         // Mesure de la taille du conteneur avant animation
         const oldWidth = message.getBoundingClientRect().width;
-        const gap = 5;
+        const gap = parseFloat(getComputedStyle(container).columnGap);
         
         // Fixation de la largeur du conteneur
         container.style.width = `${oldWidth + hedgehog.offsetWidth + gap}px`;
@@ -153,17 +153,18 @@ async function animateHedgehog() {
             }
         );
         
-        const hideAnimation = message.animate(
-            [
-                { clipPath: "inset(0 0% 0 0)" },
-                { clipPath: "inset(0 100% 0 0)" }
-            ],
-            {
-                duration,
-                easing: "linear",
-                fill: "forwards"
-            }
-        );
+        message.animate(
+    [
+        { clipPath: "inset(0 0% 0 0)" },
+        { clipPath: "inset(0 100% 0 0)" }
+    ],
+    {
+        duration,
+        easing: "linear",
+        fill: "forwards",
+        composite: "replace"
+    }
+)
         
         await Promise.all([
             moveAnimation.finished,
