@@ -160,11 +160,9 @@ const hideAnimation = message.animate(
     [
         {
             clipPath: "inset(0 0% 0 0)",
-            webkitClipPath: "inset(0 0% 0 0)"
         },
         {
             clipPath: "inset(0 100% 0 0)",
-            webkitClipPath: "inset(0 100% 0 0)"
         }
     ],
     {
@@ -231,11 +229,9 @@ moveAnimation.cancel();
     [
         {
             clipPath: "inset(0 100% 0 0)",
-            webkitClipPath: "inset(0 100% 0 0)"
         },
         {
             clipPath: "inset(0 0% 0 0)",
-            webkitClipPath: "inset(0 0% 0 0)"
         }
     ],
     {
@@ -294,26 +290,25 @@ returnAnimation.cancel();
     }
 }
 
-function animateClipPath(element, from, to, duration) {
-    return new Promise(resolve => {
-        const start = performance.now();
+function testClipPath() {
+    const message = document.querySelector("#footer-message");
 
-        function frame(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const value = from + (to - from) * progress;
-
-            element.style.clipPath = `inset(0 ${value}% 0 0)`;
-
-            if (progress < 1) {
-                requestAnimationFrame(frame);
-            } else {
-                resolve();
-            }
+    const animation = message.animate(
+        [
+            { clipPath: "inset(0 0% 0 0)" },
+            { clipPath: "inset(0 100% 0 0)" },
+            { clipPath: "inset(0 0% 0 0)" }
+        ],
+        {
+            duration: 4000,
+            easing: "linear"
         }
+    );
 
-        requestAnimationFrame(frame);
-    });
+    return animation.finished;
 }
+
+testClipPath();
 
 
 // ==================================================

@@ -106,6 +106,7 @@ nav ul {
   
   nav li {
     padding: 3px 0;
+    font-size: 1.5em;
   }
   nav li:hover {
     background: #4fb994;
