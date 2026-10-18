@@ -135,7 +135,6 @@ async function animateHedgehog() {
         const oldWidth = message.getBoundingClientRect().width;
         const computedGap = parseFloat(getComputedStyle(container).columnGap);
         const gap = Number.isFinite(computedGap) ? computedGap : 5;
-        console.log({ oldWidth, gap, hedgehogWidth: hedgehog.offsetWidth });
         
         // Fixation de la largeur du conteneur
         container.style.width = `${oldWidth + hedgehog.offsetWidth + gap}px`;
@@ -144,30 +143,30 @@ async function animateHedgehog() {
         sonicSound.play();
         
         const moveAnimation = hedgehog.animate(
-    [
-        { transform: "translateX(0) scaleX(1)" },
-        { transform: `translateX(-${oldWidth + gap}px) scaleX(1)` }
-    ],
-    {
-        duration,
-        easing: "linear",
-        fill: "forwards"
-    }
-);
-
-// Effacement progressif du texte
-const hideAnimation = animateMask(message, 100, 0, duration);
-
-await Promise.all([
-    moveAnimation.finished,
-    hideAnimation
-]);
-
-       // Conserver la position finale du hérisson
-hedgehog.style.transform = `translateX(-${oldWidth + gap}px) scaleX(1)`;
-
-// Supprimer l'animation devenue inutile
-moveAnimation.cancel();
+            [
+                { transform: "translateX(0) scaleX(1)" },
+                { transform: `translateX(-${oldWidth + gap}px) scaleX(1)` }
+            ],
+            {
+                duration,
+                easing: "linear",
+                fill: "forwards"
+            }
+        );
+        
+        // Effacement progressif du texte
+        const hideAnimation = animateMask(message, 100, 0, duration);
+        
+        await Promise.all([
+            moveAnimation.finished,
+            hideAnimation
+        ]);
+        
+        // Conserver la position finale du hérisson
+        hedgehog.style.transform = `translateX(-${oldWidth + gap}px) scaleX(1)`;
+        
+        // Supprimer l'animation devenue inutile
+        moveAnimation.cancel();
         
         // Changement du texte
         messageIndex = (messageIndex + 1) % messages.length;
@@ -205,19 +204,19 @@ moveAnimation.cancel();
         );
         
         const showAnimation = animateMask(message, 0, 100, duration);
-
-await Promise.all([
-    returnAnimation.finished,
-    showAnimation
-]);
+        
+        await Promise.all([
+            returnAnimation.finished,
+            showAnimation
+        ]);
         
         await Promise.all([
             returnAnimation.finished,
             showAnimation.finished
         ]);
-
-hedgehog.style.transform = "scaleX(-1)";
-returnAnimation.cancel();
+        
+        hedgehog.style.transform = "scaleX(-1)";
+        returnAnimation.cancel();
         
         // Remise du hérisson dans son orientation initiale
         await hedgehog.animate(
@@ -239,12 +238,10 @@ returnAnimation.cancel();
         console.error("Erreur durant l'animation du hérisson :", error);
         
     } finally {
-
+        
         console.log(hedgehog.getAnimations());
-        console.log(message.getAnimations());
         
         hedgehog.getAnimations().forEach(animation => animation.cancel());
-        message.getAnimations().forEach(animation => animation.cancel());
         
         hedgehog.style.transform = "";
         message.style.removeProperty("--mask-progress");
@@ -260,21 +257,21 @@ returnAnimation.cancel();
 function animateMask(element, from, to, duration) {
     return new Promise(resolve => {
         const start = performance.now();
-
+        
         function frame(now) {
             const progress = Math.min((now - start) / duration, 1);
-
+            
             const value = from + (to - from) * progress;
-
+            
             element.style.setProperty("--mask-progress", `${value}%`);
-
+            
             if (progress < 1) {
                 requestAnimationFrame(frame);
             } else {
                 resolve();
             }
         }
-
+        
         requestAnimationFrame(frame);
     });
 }
