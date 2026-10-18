@@ -156,39 +156,18 @@ async function animateHedgehog() {
 );
 
 // Effacement progressif du texte
-const hideAnimation = message.animate(
-    [
-        {
-            clipPath: "inset(0 0% 0 0)",
-        },
-        {
-            clipPath: "inset(0 100% 0 0)",
-        }
-    ],
-    {
-        duration,
-        easing: "linear",
-        fill: "forwards"
-    }
-);
+const hideAnimation = animateMask(message, 100, 0, duration);
 
-        
-        await Promise.all([
-            moveAnimation.finished,
-            hideAnimation.finished
-        ]);
+await Promise.all([
+    moveAnimation.finished,
+    hideAnimation
+]);
 
        // Conserver la position finale du hérisson
 hedgehog.style.transform = `translateX(-${oldWidth + gap}px) scaleX(1)`;
 
 // Supprimer l'animation devenue inutile
 moveAnimation.cancel();
-        
-        // Conservation de l'état final du masque
-        message.style.clipPath = "inset(0 100% 0 0)";
-        
-        // Suppression de l'animation d'effacement
-        hideAnimation.cancel();
         
         // Changement du texte
         messageIndex = (messageIndex + 1) % messages.length;
@@ -225,21 +204,12 @@ moveAnimation.cancel();
             }
         );
         
-        const showAnimation = message.animate(
-    [
-        {
-            clipPath: "inset(0 100% 0 0)",
-        },
-        {
-            clipPath: "inset(0 0% 0 0)",
-        }
-    ],
-    {
-        duration,
-        easing: "linear",
-        fill: "forwards"
-    }
-);
+        const showAnimation = animateMask(message, 0, 100, duration);
+
+await Promise.all([
+    returnAnimation.finished,
+    showAnimation
+]);
         
         await Promise.all([
             returnAnimation.finished,
@@ -248,12 +218,6 @@ moveAnimation.cancel();
 
 hedgehog.style.transform = "scaleX(-1)";
 returnAnimation.cancel();
-        
-        // Conservation du texte entièrement visible
-        message.style.clipPath = "inset(0 0% 0 0)";
-        
-        // Suppression de l'animation de réapparition uniquement
-        showAnimation.cancel();
         
         // Remise du hérisson dans son orientation initiale
         await hedgehog.animate(
@@ -275,12 +239,15 @@ returnAnimation.cancel();
         console.error("Erreur durant l'animation du hérisson :", error);
         
     } finally {
+
+        console.log(hedgehog.getAnimations());
+        console.log(message.getAnimations());
         
         hedgehog.getAnimations().forEach(animation => animation.cancel());
         message.getAnimations().forEach(animation => animation.cancel());
         
         hedgehog.style.transform = "";
-        message.style.clipPath = "";
+        message.style.removeProperty("--mask-progress");
         container.style.width = "";
         
         hedgehog.classList.remove("animating");
@@ -290,29 +257,27 @@ returnAnimation.cancel();
     }
 }
 
-function testClipPath() {
-    const message = document.querySelector("#footer-message");
+function animateMask(element, from, to, duration) {
+    return new Promise(resolve => {
+        const start = performance.now();
 
-    // Supprimer les éventuelles animations précédentes
-    message.getAnimations().forEach(animation => animation.cancel());
+        function frame(now) {
+            const progress = Math.min((now - start) / duration, 1);
 
-    // Réinitialiser le masque
-    message.style.clipPath = "inset(0 0% 0 0)";
+            const value = from + (to - from) * progress;
 
-    return message.animate(
-        [
-            { clipPath: "inset(0 0% 0 0)" },
-            { clipPath: "inset(0 100% 0 0)" },
-            { clipPath: "inset(0 0% 0 0)" }
-        ],
-        {
-            duration: 4000,
-            easing: "linear"
+            element.style.setProperty("--mask-progress", `${value}%`);
+
+            if (progress < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                resolve();
+            }
         }
-    ).finished;
-}
 
-testClipPath();
+        requestAnimationFrame(frame);
+    });
+}
 
 
 // ==================================================

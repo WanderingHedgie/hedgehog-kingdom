@@ -106,7 +106,7 @@ nav ul {
   
   nav li {
     padding: 3px 0;
-    font-size: 1.75em;
+    font-size: 1.25em;
   }
   nav li:hover {
     background: #4fb994;
@@ -415,11 +415,19 @@ footer {
     display: inline-block;
     flex-shrink: 0;
     white-space: nowrap;
+    transition: none;
 
-    mask-image: linear-gradient(to right, black 50%, transparent 50%);
-    mask-size: 200% 100%;
-    mask-position: 0% 0%;
-    mask-repeat: no-repeat;
+    mask-image: linear-gradient(
+        to right,
+        black var(--mask-progress, 100%),
+        transparent var(--mask-progress, 100%)
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        black var(--mask-progress, 100%),
+        transparent var(--mask-progress, 100%)
+    );
 }
 
 #footer-hedgehog {
