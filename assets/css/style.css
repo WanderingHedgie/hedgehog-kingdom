@@ -400,8 +400,9 @@ footer p {
 
 #footer-message {
   display: inline-block;
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0% 0 0);
   white-space: nowrap;
+  transition: none;
 }
 
 #footer-hedgehog {

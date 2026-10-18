@@ -5,13 +5,13 @@
 const links = document.querySelectorAll("nav li");
 
 icons.addEventListener("click", () => {
-  nav.classList.toggle("active");
+    nav.classList.toggle("active");
 });
 
 links.forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
-  });
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+    });
 });
 
 const header = document.querySelector("header");
@@ -33,12 +33,12 @@ const lightboxDesc = document.getElementById("lightbox-description");
 
 document.addEventListener("click", event => {
     const img = event.target.closest("img.zoomable");
-
+    
     if (!img) return;
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
     lightboxDesc.textContent = img.alt;
-
+    
     lightboxImg.classList.toggle(
         "transparent",
         new URL(img.src).pathname.toLowerCase().endsWith(".png")
@@ -73,13 +73,13 @@ console.log(
 const headerIconTitle = document.querySelectorAll("#nav-hedgehog, nav h1, #end-title");
 
 const homeURL = window.location.hostname.endsWith(".github.io")
-    ? "/hedgehog-kingdom/"
-    : new URL(
-        window.location.pathname.includes("/pages/")
-            ? "../index.html"
-            : "index.html",
-        window.location.href
-    ).href;
+? "/hedgehog-kingdom/"
+: new URL(
+    window.location.pathname.includes("/pages/")
+    ? "../index.html"
+    : "index.html",
+    window.location.href
+).href;
 
 headerIconTitle.forEach(element => {
     element.addEventListener("click", () => {
@@ -98,7 +98,7 @@ const sonicSound = document.querySelector("#sonic-ring");
 sonicSound.volume = 0.08;
 
 const messages = [
-    "Parce que l'on a tous besoin de piquant et de douceur dans la vie",
+    "Parce que l'on a tous besoin d'un peude douceur dans la vie",
     "Un petit hérisson peut cacher de grandes surprises !",
     "La vie est plus douce avec quelques piquants",
     "Attention, hérisson en vadrouille !"
@@ -118,66 +118,73 @@ message.textContent = messages[messageIndex];
 let isAnimating = false;
 
 async function animateHedgehog() {
-
+    
     if (isAnimating) return;
-
+    
     isAnimating = true;
-
+    
     hedgehog.classList.add("animating");
     hedgehog.setAttribute("aria-disabled", "true");
-
+    
     const duration = 2000;
     const turnDuration = 350;
-
+    
     try {
-
+        
         // Mesure de la taille du conteneur avant animation
         const oldWidth = message.getBoundingClientRect().width;
         const gap = 5;
-
+        
         // Fixation de la largeur du conteneur
         container.style.width = `${oldWidth + hedgehog.offsetWidth + gap}px`;
-
+        
         // Déplacement vers la gauche + effacement
         sonicSound.play();
-
+        
+        const moveAnimation = hedgehog.animate(
+            [
+                { transform: "translateX(0) scaleX(1)" },
+                { transform: `translateX(-${oldWidth + gap}px) scaleX(1)` }
+            ],
+            {
+                duration,
+                easing: "linear",
+                fill: "forwards"
+            }
+        );
+        
+        const hideAnimation = message.animate(
+            [
+                { clipPath: "inset(0 0% 0 0)" },
+                { clipPath: "inset(0 100% 0 0)" }
+            ],
+            {
+                duration,
+                easing: "linear",
+                fill: "forwards"
+            }
+        );
+        
         await Promise.all([
-
-            hedgehog.animate(
-                [
-                    { transform: "translateX(0) scaleX(1)" },
-                    { transform: `translateX(-${oldWidth + gap}px) scaleX(1)` }
-                ],
-                {
-                    duration,
-                    easing: "linear",
-                    fill: "forwards"
-                }
-            ).finished,
-
-            message.animate(
-                [
-                    { clipPath: "inset(0 0px 0 0)" },
-                    { clipPath: "inset(0 ${oldWidth}px 0 0)" }
-                ],
-                {
-                    duration,
-                    easing: "linear",
-                    fill: "forwards"
-                }
-            ).finished
-
+            moveAnimation.finished,
+            hideAnimation.finished
         ]);
-
+        
+        // Conservation de l'état final du masque
+        message.style.clipPath = "inset(0 100% 0 0)";
+        
+        // Suppression de l'animation d'effacement
+        hideAnimation.cancel();
+        
         // Changement du texte
         messageIndex = (messageIndex + 1) % messages.length;
         message.textContent = messages[messageIndex];
-
+        
         const newWidth = message.getBoundingClientRect().width;
-
+        
         // Adaptation de la largeur du conteneur
         container.style.width = `${newWidth + hedgehog.offsetWidth + gap}px`;
-
+        
         // Demi-tour
         sonicSound.play();
         await hedgehog.animate(
@@ -190,36 +197,43 @@ async function animateHedgehog() {
                 fill: "forwards"
             }
         ).finished;
-
+        
         // Retour vers la droite + apparition du nouveau texte
+        const returnAnimation = hedgehog.animate(
+            [
+                { transform: `translateX(-${newWidth + gap}px) scaleX(-1)` },
+                { transform: "translateX(0) scaleX(-1)" }
+            ],
+            {
+                duration,
+                easing: "linear",
+                fill: "forwards"
+            }
+        );
+        
+        const showAnimation = message.animate(
+            [
+                { clipPath: "inset(0 100% 0 0)" },
+                { clipPath: "inset(0 0% 0 0)" }
+            ],
+            {
+                duration,
+                easing: "linear",
+                fill: "forwards"
+            }
+        );
+        
         await Promise.all([
-
-            hedgehog.animate(
-                [
-                    { transform: `translateX(-${newWidth + gap}px) scaleX(-1)` },
-                    { transform: "translateX(0) scaleX(-1)" }
-                ],
-                {
-                    duration,
-                    easing: "linear",
-                    fill: "forwards"
-                }
-            ).finished,
-
-            message.animate(
-                [
-                    { clipPath: "inset(0 ${newWidth}px 0 0)" },
-                    { clipPath: "inset(0 0px 0 0)" }
-                ],
-                {
-                    duration,
-                    easing: "linear",
-                    fill: "forwards"
-                }
-            ).finished
-
+            returnAnimation.finished,
+            showAnimation.finished
         ]);
-
+        
+        // Conservation du texte entièrement visible
+        message.style.clipPath = "inset(0 0% 0 0)";
+        
+        // Suppression de l'animation de réapparition uniquement
+        showAnimation.cancel();
+        
         // Remise du hérisson dans son orientation initiale
         await hedgehog.animate(
             [
@@ -231,26 +245,26 @@ async function animateHedgehog() {
                 fill: "forwards"
             }
         ).finished;
-
+        
         // Sauvegarde du nouveau message
         localStorage.setItem(STORAGE_KEY, messageIndex);
-
+        
     } catch (error) {
-
+        
         console.error("Erreur durant l'animation du hérisson :", error);
-
+        
     } finally {
-
+        
         hedgehog.getAnimations().forEach(animation => animation.cancel());
         message.getAnimations().forEach(animation => animation.cancel());
-
+        
         hedgehog.style.transform = "";
         message.style.clipPath = "";
         container.style.width = "";
-
+        
         hedgehog.classList.remove("animating");
         hedgehog.setAttribute("aria-disabled", "false");
-
+        
         isAnimating = false;
     }
 }
