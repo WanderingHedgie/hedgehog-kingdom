@@ -534,7 +534,7 @@ GALERIE GIFS
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
-  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
   transition: transform 0.3s ease;
 }
 
