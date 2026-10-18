@@ -98,7 +98,7 @@ const sonicSound = document.querySelector("#sonic-ring");
 sonicSound.volume = 0.08;
 
 const messages = [
-    "Parce que l'on a tous besoin d'un peude douceur dans la vie",
+    "Parce que l'on a tous besoin d'un peu de douceur dans la vie",
     "Un petit hérisson peut cacher de grandes surprises !",
     "La vie est plus douce avec quelques piquants",
     "Attention, hérisson en vadrouille !"
