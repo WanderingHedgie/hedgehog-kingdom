@@ -40,6 +40,11 @@ nav div:first-child {
   align-items: center;
 }
 
+nav div:first-child a:hover {
+  cursor: url("../images/cursors/lien.png"), pointer;
+  /* text-decoration: none; */
+}
+
 #nav-hedgehog {
   filter: invert(1);
   height: auto;
@@ -86,7 +91,11 @@ nav ul {
 
 
 #icons {
+<<<<<<< Updated upstream
   cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
+=======
+  cursor: url("../images/cursors/lien.png"), pointer;
+>>>>>>> Stashed changes
   display: none;
 }
 
@@ -333,7 +342,11 @@ aside {
 
 #aside-header h2 {
   margin-top: 0;
+<<<<<<< Updated upstream
   cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
+=======
+  cursor: url("../images/cursors/lien.png"), pointer;
+>>>>>>> Stashed changes
 }
 
 #qmark {
@@ -431,7 +444,11 @@ footer {
 }
 
 #footer-hedgehog {
+<<<<<<< Updated upstream
   
+=======
+  cursor: url("../images/cursors/lien.png"), pointer;
+>>>>>>> Stashed changes
   display: inline-block;
   position: relative;
   z-index: 2;
@@ -465,7 +482,12 @@ footer {
 
 .footer-leaf {
   height: auto;
+<<<<<<< Updated upstream
   width: calc(0.4em + 0.45vw);
+=======
+  width: calc(00.50em + 0.45vw);
+  cursor: url("../images/cursors/lien.png"), pointer;
+>>>>>>> Stashed changes
 }
 
 /* ==========================================
@@ -484,7 +506,11 @@ LIGHTBOX
 ========================================== */
 
 .zoomable {
+<<<<<<< Updated upstream
   cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
+=======
+  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
+>>>>>>> Stashed changes
 }
 
 #lightbox {
