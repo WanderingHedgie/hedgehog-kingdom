@@ -35,18 +35,16 @@ document.addEventListener("click", event => {
     const img = event.target.closest("img.zoomable");
 
     if (!img) return;
-    img.addEventListener("click", () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxDesc.textContent = img.alt;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxDesc.textContent = img.alt;
 
-        lightboxImg.classList.toggle(
-            "transparent",
-            new URL(img.src).pathname.toLowerCase().endsWith(".png")
-        );
-        
-        lightbox.classList.add("active");
-    });
+    lightboxImg.classList.toggle(
+        "transparent",
+        new URL(img.src).pathname.toLowerCase().endsWith(".png")
+    );
+    
+    lightbox.classList.add("active");
 });
 
 
@@ -108,7 +106,7 @@ const messages = [
 
 const STORAGE_KEY = "hedgehog-message-index";
 
-// Message sauvegardé
+// Récupération du message sauvegardé s'il existe et qu'il est valide, sinon attribution du premier message (index 0)
 let messageIndex = Number(localStorage.getItem(STORAGE_KEY) ?? 0);
 
 if (!Number.isInteger(messageIndex) || messageIndex < 0 || messageIndex >= messages.length) {
@@ -133,14 +131,14 @@ async function animateHedgehog() {
 
     try {
 
-        // 1. Mesurer la largeur de l'ancien texte
+        // Mesure de la taille du conteneur avant animation
         const oldWidth = message.getBoundingClientRect().width;
         const gap = 5;
 
-        // Figer la largeur du conteneur
+        // Fixation de la largeur du conteneur
         container.style.width = `${oldWidth + hedgehog.offsetWidth + gap}px`;
 
-        // 2. Déplacement vers la gauche + effacement
+        // Déplacement vers la gauche + effacement
         sonicSound.play();
 
         await Promise.all([
@@ -171,16 +169,16 @@ async function animateHedgehog() {
 
         ]);
 
-        // 3. Changer le texte
+        // Changement du texte
         messageIndex = (messageIndex + 1) % messages.length;
         message.textContent = messages[messageIndex];
 
         const newWidth = message.getBoundingClientRect().width;
 
-        // Adapter la largeur du conteneur
+        // Adaptation de la largeur du conteneur
         container.style.width = `${newWidth + hedgehog.offsetWidth + gap}px`;
 
-        // 4. Demi-tour
+        // Demi-tour
         sonicSound.play();
         await hedgehog.animate(
             [
@@ -193,7 +191,7 @@ async function animateHedgehog() {
             }
         ).finished;
 
-        // 5. Retour vers la droite + apparition du nouveau texte
+        // Retour vers la droite + apparition du nouveau texte
         await Promise.all([
 
             hedgehog.animate(
@@ -222,7 +220,7 @@ async function animateHedgehog() {
 
         ]);
 
-        // 6. Remettre le hérisson dans son orientation initiale
+        // Remise du hérisson dans son orientation initiale
         await hedgehog.animate(
             [
                 { transform: "scaleX(-1)" },
@@ -234,7 +232,7 @@ async function animateHedgehog() {
             }
         ).finished;
 
-        // 7. Sauvegarder le nouveau message
+        // Sauvegarde du nouveau message
         localStorage.setItem(STORAGE_KEY, messageIndex);
 
     } catch (error) {
