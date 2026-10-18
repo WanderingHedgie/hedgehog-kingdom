@@ -41,7 +41,7 @@ nav div:first-child {
 }
 
 nav div:first-child a:hover {
-  cursor: url("../images/cursors/lien.png"), pointer;
+  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
   /* text-decoration: none; */
 }
 
@@ -100,7 +100,7 @@ nav ul {
   nav ul {
     flex-direction: column;
     background: linear-gradient(90deg, rgba(57, 117, 93, 1) 0%, rgba(62, 150, 118, 1) 53%, rgba(39, 163, 120, 1) 100%);
-    position: fixed;
+    position: absolute;
     left: -100%;
     top: calc(var(--header-height));
     width: 100%;
@@ -115,6 +115,10 @@ nav ul {
   }
   nav li:hover {
     background: #4fb994;
+    text-decoration: underline;
+    text-decoration-thickness: calc(2px + 0.1vw);
+    text-decoration-color: #e2ead2;
+    text-underline-offset: 0.3vw;
   }
   
   nav.active ul {
