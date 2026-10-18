@@ -157,8 +157,8 @@ async function animateHedgehog() {
 
             message.animate(
                 [
-                    { clipPath: "inset(0 0 0 0)" },
-                    { clipPath: "inset(0 100% 0 0)" }
+                    { clipPath: "inset(0 0px 0 0)" },
+                    { clipPath: "inset(0 ${oldWidth}px 0 0)" }
                 ],
                 {
                     duration,
@@ -208,8 +208,8 @@ async function animateHedgehog() {
 
             message.animate(
                 [
-                    { clipPath: "inset(0 100% 0 0)" },
-                    { clipPath: "inset(0 0 0 0)" }
+                    { clipPath: "inset(0 ${newWidth}px 0 0)" },
+                    { clipPath: "inset(0 0px 0 0)" }
                 ],
                 {
                     duration,
