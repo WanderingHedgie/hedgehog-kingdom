@@ -407,6 +407,7 @@ footer {
     flex-shrink: 0;
     white-space: nowrap;
     clip-path: inset(0 0% 0 0);
+    -webkit-clip-path: inset(0 0% 0 0);
     transition: none;
 }
 

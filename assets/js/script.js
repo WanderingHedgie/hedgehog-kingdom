@@ -158,8 +158,14 @@ async function animateHedgehog() {
 // Effacement progressif du texte
 const hideAnimation = message.animate(
     [
-        { clipPath: "inset(0 0% 0 0)" },
-        { clipPath: "inset(0 100% 0 0)" }
+        {
+            clipPath: "inset(0 0% 0 0)",
+            webkitClipPath: "inset(0 0% 0 0)"
+        },
+        {
+            clipPath: "inset(0 100% 0 0)",
+            webkitClipPath: "inset(0 100% 0 0)"
+        }
     ],
     {
         duration,
@@ -222,16 +228,22 @@ moveAnimation.cancel();
         );
         
         const showAnimation = message.animate(
-            [
-                { clipPath: "inset(0 100% 0 0)" },
-                { clipPath: "inset(0 0% 0 0)" }
-            ],
-            {
-                duration,
-                easing: "linear",
-                fill: "forwards"
-            }
-        );
+    [
+        {
+            clipPath: "inset(0 100% 0 0)",
+            webkitClipPath: "inset(0 100% 0 0)"
+        },
+        {
+            clipPath: "inset(0 0% 0 0)",
+            webkitClipPath: "inset(0 0% 0 0)"
+        }
+    ],
+    {
+        duration,
+        easing: "linear",
+        fill: "forwards"
+    }
+);
         
         await Promise.all([
             returnAnimation.finished,
