@@ -8,10 +8,31 @@ icons.addEventListener("click", () => {
     nav.classList.toggle("active");
 });
 
-links.forEach((link) => {
-    link.addEventListener("click", () => {
+links.forEach((li) => {
+    li.addEventListener("click", (event) => {
+        const a = li.querySelector("a");
+
+        if (!a) return;
+
         nav.classList.remove("active");
+
+        // Si le clic est directement sur le lien, le navigateur gère
+        if (event.target.closest("a")) return;
+
+        // Si le clic est sur le <li>, le lien le plus proche est déclenché.
+        a.click();
     });
+});
+
+// Fermeture de la navbar si l'utilisateur cliquer à l'extérieur
+document.addEventListener("click", (event) => {
+    if (
+        nav.classList.contains("active") &&
+        !nav.contains(event.target) &&
+        !icons.contains(event.target)
+    ) {
+        nav.classList.remove("active");
+    }
 });
 
 const header = document.querySelector("header");
