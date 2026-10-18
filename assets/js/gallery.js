@@ -1,5 +1,5 @@
 async function chargerGalerie() {
-    const response = await fetch("../assets/data/gallery.json");
+    const response = await fetch("/hedgehog-kingdom/assets/data/gallery.json");
 
     if (!response.ok) {
         throw new Error(`Erreur HTTP : ${response.status}`);
@@ -11,7 +11,7 @@ async function chargerGalerie() {
     images.forEach(chemin => {
         const img = document.createElement("img");
 
-        img.src = "../" + chemin;
+        img.src = chemin;
         // img.alt = decodeURIComponent(chemin.split("/").pop()).replace(/\.[^.]+$/, "");
         img.loading = "lazy";
         img.classList.add("zoomable");
