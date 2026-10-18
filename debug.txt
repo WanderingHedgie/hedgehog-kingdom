@@ -1,4 +1,0 @@
-- Feuille bas de page ne se redimensionne pas bien en fonction de la taille d'écran
-- Pour chaque GIF dans la galerie il faut cliquer deux fois, puis ouvrir en grand.
-- La taille du tableau sur tel dépasse.
-- Description sous h1 index, manque un r.
