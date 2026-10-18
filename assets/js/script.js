@@ -293,7 +293,13 @@ returnAnimation.cancel();
 function testClipPath() {
     const message = document.querySelector("#footer-message");
 
-    const animation = message.animate(
+    // Supprimer les éventuelles animations précédentes
+    message.getAnimations().forEach(animation => animation.cancel());
+
+    // Réinitialiser le masque
+    message.style.clipPath = "inset(0 0% 0 0)";
+
+    return message.animate(
         [
             { clipPath: "inset(0 0% 0 0)" },
             { clipPath: "inset(0 100% 0 0)" },
@@ -303,9 +309,7 @@ function testClipPath() {
             duration: 4000,
             easing: "linear"
         }
-    );
-
-    return animation.finished;
+    ).finished;
 }
 
 testClipPath();

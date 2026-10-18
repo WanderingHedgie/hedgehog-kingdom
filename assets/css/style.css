@@ -106,7 +106,7 @@ nav ul {
   
   nav li {
     padding: 3px 0;
-    font-size: 1.5em;
+    font-size: 1.75em;
   }
   nav li:hover {
     background: #4fb994;
@@ -510,6 +510,13 @@ LIGHTBOX
   width: 50%;
   font-size: calc(0.2em + 1.5vw);
   text-align: center;
+}
+
+@media(max-width:1200px) /*Smartphone et tablette */
+{
+  #lightbox-description {
+    font-size: 1.5em;
+  }
 }
 
 /* ==========================================
