@@ -403,13 +403,23 @@ footer {
   font-size: calc(0.50em + 0.45vw);
 }
 
-#footer-message {
+/* #footer-message {
     display: inline-block;
     flex-shrink: 0;
     white-space: nowrap;
     clip-path: inset(0 0% 0 0);
-    -webkit-clip-path: inset(0 0% 0 0);
     transition: none;
+} */
+
+#footer-message {
+    display: inline-block;
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    mask-image: linear-gradient(to right, black 50%, transparent 50%);
+    mask-size: 200% 100%;
+    mask-position: 0% 0%;
+    mask-repeat: no-repeat;
 }
 
 #footer-hedgehog {
@@ -515,7 +525,7 @@ LIGHTBOX
 @media(max-width:1200px) /*Smartphone et tablette */
 {
   #lightbox-description {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 }
 
