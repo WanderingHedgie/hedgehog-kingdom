@@ -133,27 +133,30 @@ async function animateHedgehog() {
         
         // Mesure de la taille du conteneur avant animation
         const oldWidth = message.getBoundingClientRect().width;
-        const gap = parseFloat(getComputedStyle(container).columnGap);
+        const computedGap = parseFloat(getComputedStyle(container).columnGap);
+        const gap = Number.isFinite(computedGap) ? computedGap : 5;
+        console.log({ oldWidth, gap, hedgehogWidth: hedgehog.offsetWidth });
         
         // Fixation de la largeur du conteneur
         container.style.width = `${oldWidth + hedgehog.offsetWidth + gap}px`;
         
-        // Déplacement vers la gauche + effacement
+        // Déplacement vers la gauche
         sonicSound.play();
         
         const moveAnimation = hedgehog.animate(
-            [
-                { transform: "translateX(0) scaleX(1)" },
-                { transform: `translateX(-${oldWidth + gap}px) scaleX(1)` }
-            ],
-            {
-                duration,
-                easing: "linear",
-                fill: "forwards"
-            }
-        );
-        
-        message.animate(
+    [
+        { transform: "translateX(0) scaleX(1)" },
+        { transform: `translateX(-${oldWidth + gap}px) scaleX(1)` }
+    ],
+    {
+        duration,
+        easing: "linear",
+        fill: "forwards"
+    }
+);
+
+// Effacement progressif du texte
+const hideAnimation = message.animate(
     [
         { clipPath: "inset(0 0% 0 0)" },
         { clipPath: "inset(0 100% 0 0)" }
@@ -161,15 +164,21 @@ async function animateHedgehog() {
     {
         duration,
         easing: "linear",
-        fill: "forwards",
-        composite: "replace"
+        fill: "forwards"
     }
-)
+);
+
         
         await Promise.all([
             moveAnimation.finished,
             hideAnimation.finished
         ]);
+
+       // Conserver la position finale du hérisson
+hedgehog.style.transform = `translateX(-${oldWidth + gap}px) scaleX(1)`;
+
+// Supprimer l'animation devenue inutile
+moveAnimation.cancel();
         
         // Conservation de l'état final du masque
         message.style.clipPath = "inset(0 100% 0 0)";
@@ -228,6 +237,9 @@ async function animateHedgehog() {
             returnAnimation.finished,
             showAnimation.finished
         ]);
+
+hedgehog.style.transform = "scaleX(-1)";
+returnAnimation.cancel();
         
         // Conservation du texte entièrement visible
         message.style.clipPath = "inset(0 0% 0 0)";
@@ -268,6 +280,27 @@ async function animateHedgehog() {
         
         isAnimating = false;
     }
+}
+
+function animateClipPath(element, from, to, duration) {
+    return new Promise(resolve => {
+        const start = performance.now();
+
+        function frame(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const value = from + (to - from) * progress;
+
+            element.style.clipPath = `inset(0 ${value}% 0 0)`;
+
+            if (progress < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                resolve();
+            }
+        }
+
+        requestAnimationFrame(frame);
+    });
 }
 
 
