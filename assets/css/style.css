@@ -1,11 +1,11 @@
 @import url('cursors.css');
 @font-face {
   font-family: chewy;
-  src: url(/hedgehog-kingdom/assets/fonts/Chewy/Chewy-Regular.ttf);
+  src: url(../fonts/Chewy/Chewy-Regular.ttf);
 }
 @font-face {
   font-family: nunito;
-  src: url("/hedgehog-kingdom/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf");
+  src: url("../fonts/Nunito/Nunito-VariableFont_wght.ttf");
 }
 
 * {
@@ -59,7 +59,7 @@ nav h1 {
 }
 
 #nav-hedgehog:hover, nav h1:hover, #end-title:hover {
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
 }
 
 #end-title {
@@ -91,7 +91,7 @@ nav ul {
 
 
 #icons {
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
   display: none;
 }
 
@@ -338,7 +338,7 @@ aside {
 
 #aside-header h2 {
   margin-top: 0;
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
 }
 
 #qmark {
@@ -446,7 +446,7 @@ footer > div {
   position: relative;
   z-index: 2;
   
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/lien.png"), pointer;
+  cursor: url("../images/cursors/lien.png"), pointer;
   -webkit-user-select: none;
   user-select: none;
   
@@ -456,7 +456,7 @@ footer > div {
 
 #footer-hedgehog.animating {
   pointer-events: none;
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/normal.png"), default;
+  cursor: url("../images/cursors/normal.png"), default;
 }
 
 #footer-hedgehog:focus-visible {
@@ -497,7 +497,7 @@ LIGHTBOX
 ========================================== */
 
 .zoomable {
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
 }
 
 #lightbox {
@@ -512,7 +512,7 @@ LIGHTBOX
 }
 
 #lightbox.active, #lightbox.active img:hover, #lightbox.active p:hover {
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_arriere.png"), zoom-out;
+  cursor: url("../images/cursors/zoom_arriere.png"), zoom-out;
 }
 
 #lightbox.active {
@@ -580,11 +580,11 @@ GALERIE GIFS
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
   transition: transform 0.3s ease;
 }
 
 .gallery img:hover {
   transform: scale(1.05);
-  cursor: url("/hedgehog-kingdom/assets/images/cursors/zoom_avant.png"), zoom-in;
+  cursor: url("../images/cursors/zoom_avant.png"), zoom-in;
 }
